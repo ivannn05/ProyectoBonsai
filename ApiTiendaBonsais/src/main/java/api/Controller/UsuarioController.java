@@ -1,8 +1,6 @@
 package api.Controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,12 +13,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import api.Daos.Usuario;
 import api.Services.UsuarioService;
 import api.Utilidades.Util;
-import send.email.template.EmailTemplate;
+
 
 @RestController
 @RequestMapping("/api/usuarios") // Define la ruta base para este controlador
