@@ -1,0 +1,4 @@
+Usuario con correo:prueba@gmail.com entro en login
+Usuario entro en cerrar sesion
+Usuario con correo:givanof2005@gmail.com entro en login
+Usuario entro en cerrar sesion
