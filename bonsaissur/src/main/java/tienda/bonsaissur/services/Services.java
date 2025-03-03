@@ -14,15 +14,18 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import jakarta.mail.Authenticator;
+import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
+import jakarta.mail.PasswordAuthentication;
+import jakarta.mail.Session;
+import jakarta.mail.Transport;
+import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpSession;
 import tienda.bonsaissur.dtos.Usuario;
@@ -38,11 +41,13 @@ public class Services {
 	public static List<Usuario> listaUsu = new ArrayList();
 	public String API_URL_LOGIN = "http://localhost:8081/api/usuarios/login";
 	public static String tokenGlobal;
-/**
- * Metodo encargado de actualizar la lista de usuarios 
- * @param session
- * @return
- */
+
+	/**
+	 * Metodo encargado de actualizar la lista de usuarios
+	 * 
+	 * @param session
+	 * @return
+	 */
 	public Usuario getAllUsu(HttpSession session) {
 		String res = "";
 		Usuario usu = new Usuario();
@@ -67,18 +72,20 @@ public class Services {
 			}
 		} catch (Exception e) {
 			System.out.println("Ocurrio un error en getAllUsu");
-			util.ficheroLog("Ocurrio un error en el servicio getAllUsu:"+e.getMessage());
+			util.ficheroLog("Ocurrio un error en el servicio getAllUsu:" + e.getMessage());
 			res = "Ocurrio un error en Login";
 		}
 		return usu;
 	}
-/**
- * Metodo encargado de hacer las querys para el login
- * @param correo
- * @param contrasena
- * @param session
- * @return
- */
+
+	/**
+	 * Metodo encargado de hacer las querys para el login
+	 * 
+	 * @param correo
+	 * @param contrasena
+	 * @param session
+	 * @return
+	 */
 	public Usuario login(String correo, String contrasena, HttpSession session) {
 		String res = "";
 		Usuario usu = new Usuario();
@@ -145,22 +152,24 @@ public class Services {
 			}
 		} catch (Exception e) {
 			System.out.println("Ocurrio un error en Login");
-			util.ficheroLog("Ocurrio un error en el servicio login:"+e.getMessage());
+			util.ficheroLog("Ocurrio un error en el servicio login:" + e.getMessage());
 			res = "Ocurrio un error en Login";
 		}
 		return usu;
 	}
-/**
- * Metodo encargado de crear usuario
- * @param nombre
- * @param apellidos
- * @param correo
- * @param direccion
- * @param telefono
- * @param contrasena
- * @param rol
- * @return
- */
+
+	/**
+	 * Metodo encargado de crear usuario
+	 * 
+	 * @param nombre
+	 * @param apellidos
+	 * @param correo
+	 * @param direccion
+	 * @param telefono
+	 * @param contrasena
+	 * @param rol
+	 * @return
+	 */
 	public String Post(String nombre, String apellidos, String correo, String direccion, String telefono,
 			String contrasena, String rol) {
 
@@ -196,15 +205,17 @@ public class Services {
 			return "Registro exitoso";
 
 		} catch (Exception e) {
-			util.ficheroLog("Ocurrio un error en el servicio crear Usuario:"+e.getMessage());
+			util.ficheroLog("Ocurrio un error en el servicio crear Usuario:" + e.getMessage());
 			return "Registro erroneo";
 		}
 	}
-/**
- * Metodo encargado de eliminar usuarios
- * @param correo
- * @return
- */
+
+	/**
+	 * Metodo encargado de eliminar usuarios
+	 * 
+	 * @param correo
+	 * @return
+	 */
 	public String Delete(String correo) {
 		String respuesta = "";
 		try {
@@ -268,21 +279,23 @@ public class Services {
 				System.out.println("Error al obtener la lista de usuarios: " + responseUsu.statusCode());
 			}
 		} catch (Exception e) {
-			System.out.println("Ocurrio un error en Eliminar:"+e.getMessage());
-			util.ficheroLog("Ocurrio un error en Eliminar:"+e.getMessage());
+			System.out.println("Ocurrio un error en Eliminar:" + e.getMessage());
+			util.ficheroLog("Ocurrio un error en Eliminar:" + e.getMessage());
 		}
 		System.out.println(respuesta);
 		return respuesta;
 	}
-/**
- * Metodo encargado de actualizar los datos de los usuarios
- * @param nombre
- * @param apellidos
- * @param correo
- * @param direccion
- * @param telefono
- * @return
- */
+
+	/**
+	 * Metodo encargado de actualizar los datos de los usuarios
+	 * 
+	 * @param nombre
+	 * @param apellidos
+	 * @param correo
+	 * @param direccion
+	 * @param telefono
+	 * @return
+	 */
 	public String Put(String nombre, String apellidos, String correo, String direccion, String telefono) {
 		String resp = "";
 		try {
@@ -337,70 +350,51 @@ public class Services {
 				resp = "Ocurrio un error ";
 			}
 		} catch (Exception e) {
-			util.ficheroLog("Ocurrio un error en el servicio actualizar:"+e.getMessage());
-			
+			util.ficheroLog("Ocurrio un error en el servicio actualizar:" + e.getMessage());
+
 		}
 		return resp;
 	}
 
-	/**
-	 * Metodo encargado de enviar los correos de recuperar contrasena
-	 * @param correoDestinatario
-	 * @param asunto
-	 * @param token
-	 * @throws MessagingException
-	 */
+	private static final String REMITENTE = "bonsaissur@gmail.com";
+	private static final String CONTRASENA = "msprjeksnbhekmjc";
+
+	// Metodo que envia el correo al destinatario
 	public void enviarCorreo(String correoDestinatario, String asunto, String token) throws MessagingException {
-		try {
-		JavaMailSender mailSender = configurarServidorSMTP();
-		MimeMessage mimeMessage = mailSender.createMimeMessage();
-		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+		Session session = configurarServidorSMTP();
+		MimeMessage mimeMessage = new MimeMessage(session);
 		String mensaje = "http://localhost:8080/bonsaissur/nuevaContrasena.jsp?token=";
+		mimeMessage.setFrom(new InternetAddress(REMITENTE));
+		mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correoDestinatario));
+		mimeMessage.setSubject(asunto);
+		mimeMessage.setText(mensaje + token, "utf-8");
 
-		helper.setTo(correoDestinatario);
-		helper.setSubject(asunto);
-		helper.setText(mensaje + token, false); // false = texto plano
-		helper.setFrom("bonsaissur@gmail.com");
-
-		mailSender.send(mimeMessage);
+		Transport.send(mimeMessage);
 		System.out.println("[Correo enviado a " + correoDestinatario + "]");
-		} catch (Exception e) {
-			util.ficheroLog("Ocurrio un error en el servicio enciar correo:"+e.getMessage());
-			
-		}
 	}
 
-/**
- * Configuración del servidor SMTP
- * @return
- */
-	private JavaMailSender configurarServidorSMTP() {
-		try {
-		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-		mailSender.setHost("smtp.gmail.com");
-		mailSender.setPort(587);
-		mailSender.setUsername("bonsaissur@gmail.com");
-		mailSender.setPassword("msprjeksnbhekmjc");
-
-		Properties props = mailSender.getJavaMailProperties();
-		props.put("mail.transport.protocol", "smtp");
+	private Session configurarServidorSMTP() {
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.starttls.required", "true");
 
-		mailSender.setJavaMailProperties(props);
-		return mailSender;
-		} catch (Exception e) {
-			util.ficheroLog("Ocurrio un error en el servicio configurarServidorSMTP:"+e.getMessage());
-			
-		}
-		return null;
+		return Session.getInstance(props, new Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(REMITENTE, CONTRASENA);
+			}
+		});
 	}
-/**
- * Metodo encargado de hacer la validacion de existencia del correo
- * @param correoDestinatario
- * @return
- */
+
+	/**
+	 * Metodo encargado de hacer la validacion de existencia del correo
+	 * 
+	 * @param correoDestinatario
+	 * @return
+	 */
 	public String recuperarContrasena(String correoDestinatario) {
 		String resp = "";
 		HttpClient client = HttpClient.newHttpClient();
@@ -446,16 +440,18 @@ public class Services {
 
 			}
 		} catch (Exception e) {
-		util.ficheroLog("Ocurrio un error en el servicio recuperar contraseña;"+e.getMessage());
+			util.ficheroLog("Ocurrio un error en el servicio recuperar contraseña;" + e.getMessage());
 		}
 		return resp;
 	}
-/**
- * Metodo encargado de actualizar la contrasena 
- * @param contrasena
- * @param token
- * @return
- */
+
+	/**
+	 * Metodo encargado de actualizar la contrasena
+	 * 
+	 * @param contrasena
+	 * @param token
+	 * @return
+	 */
 	public String actualizarContrasena(String contrasena, String token) {
 		String resp = "";
 		try {
@@ -521,7 +517,7 @@ public class Services {
 				resp = "Ocurrio un error ";
 			}
 		} catch (Exception e) {
-			util.ficheroLog("Ocurrio un error en el servicio actualizar contraseña;"+e.getMessage());
+			util.ficheroLog("Ocurrio un error en el servicio actualizar contraseña;" + e.getMessage());
 		}
 		return resp;
 	}
