@@ -185,7 +185,7 @@ public class Services {
 			usuario.setCorreo(correo);
 			usuario.setDireccion(direccion);
 			usuario.setTelefono(telefono);
-			usuario.setContrasena(util.encriptarContraseña(contrasena));
+			usuario.setContrasena(contrasena);
 			Timestamp fechaRegistro = Timestamp.from(Instant.now());
 			usuario.setFechaRegistro(fechaRegistro);
 			usuario.setRol(rol);
