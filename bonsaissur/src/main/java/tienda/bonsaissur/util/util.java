@@ -61,7 +61,7 @@ public class util {
 	 */
 	public static void ficheroLog(String mensaje) {
 		try {
-			String rutaCompletaLog = "C:\\Users\\ivan\\Desktop\\workspaceProyectoDWS\\bonsaissur\\logs"
+			String rutaCompletaLog = "C:\\Users\\IVAN IMFORMATICA\\Desktop\\ProyectoBonsais\\bonsaissur\\logs"
 					.concat("\\").concat("log-").concat(creacionNombreFichero()).concat(".txt");
 			BufferedWriter escribe = new BufferedWriter(new FileWriter(rutaCompletaLog, true));
 

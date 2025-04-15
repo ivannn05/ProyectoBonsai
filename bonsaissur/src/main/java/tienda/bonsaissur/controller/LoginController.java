@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,7 +38,7 @@ public class LoginController {
 	public ResponseEntity<Void> cerrarSesion(HttpSession session) {
 
 		try {
-			
+
 			util.ficheroLog("Usuario entro en cerrar sesion");
 			if (session != null) {
 				session.invalidate(); // Cierra la sesión
@@ -48,7 +49,7 @@ public class LoginController {
 				// Redirige al login
 			}
 		} catch (Exception e) {
-util.ficheroLog("Ocurrio un error en cerrarSesion :"+e.getMessage());
+			util.ficheroLog("Ocurrio un error en cerrarSesion :" + e.getMessage());
 		}
 		return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/index.jsp")).build();
 
@@ -67,7 +68,9 @@ util.ficheroLog("Ocurrio un error en cerrarSesion :"+e.getMessage());
 			HttpSession session) {
 		try {
 			System.out.println();
-			util.ficheroLog("Usuario con correo:"+correo+" entro en login");
+			util.ficheroLog("Usuario con correo:" + correo + " entro en login");
+			System.out.println("Contraseña=" + contrasena);
+			System.out.println("Contraseña=" + util.encriptarContraseña(contrasena));
 			Usuario usu = service.login(correo, util.encriptarContraseña(contrasena), session);
 			System.out.println("Rol de Persona:" + usu.getRol());
 			if (usu.getNombre() != null) {
@@ -86,7 +89,7 @@ util.ficheroLog("Ocurrio un error en cerrarSesion :"+e.getMessage());
 
 			}
 		} catch (Exception e) {
-			util.ficheroLog("Ocurrio un error en login:"+e.getMessage());
+			util.ficheroLog("Ocurrio un error en login:" + e.getMessage());
 		}
 		return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/index.jsp")).build();
 	}
@@ -110,27 +113,53 @@ util.ficheroLog("Ocurrio un error en cerrarSesion :"+e.getMessage());
 			@RequestParam String telefono, @RequestParam String rol, HttpSession session) {
 		try {
 			util.ficheroLog("Usuario entro en registro usuario");
-			String respuesta = service.Post(nombre, apellidos, correo, direccion, telefono,
+			String respuesta = service.DatosRegistro(nombre, apellidos, correo, direccion, telefono,
 					util.encriptarContraseña(contrasena), rol);
 			Usuario usuario = (Usuario) session.getAttribute("Usuario");
-			if (respuesta.equals("Registro exitoso")) {
+			if (respuesta.equals("Enviado")) {
 
-				// Redirige a /index
-				return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/index.jsp")).build();
+				// Redirige a /mirarCorreo
+				return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/mirarCorreo.jsp"))
+						.build();
 
 			} else {
 				if (usuario.getRol().equals("Administrador")) {
 
-					return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/login.jsp"))
+					return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/mirarCorreo.jsp"))
 							.build();
 				} else {
 
-					return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/index.jsp"))
+					return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/mirarCorreo.jsp"))
 							.build();
 				}
 			}
 		} catch (Exception e) {
-			util.ficheroLog("Ocurrio un error en registro:"+e.getMessage());
+			util.ficheroLog("Ocurrio un error en registro:" + e.getMessage());
+		}
+		return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/index.jsp")).build();
+	}
+/**
+ * Controlador que confirma el usuario
+ * @param token
+ * @return
+ */
+	@GetMapping("/confirmarUsu")
+	public ResponseEntity<String> confirmarUsuario(@RequestParam("token") String token) {
+		try {
+			// Llamamos al servicio para confirmar el usuario
+			String respuesta = service.confirmarCuenta(token);
+
+			if ("Cuenta activada con éxito.".equals(respuesta)) {
+
+				// Redirige a /index // Redirige a la vista principal
+				return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/index.jsp")).build();
+			} else {
+				// Redirige a /login con error
+				return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/login.jsp")).build();
+
+			}
+		} catch (Exception e) {
+			util.ficheroLog("Ocurrio un error en eliminar:" + e.getMessage());
 		}
 		return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/index.jsp")).build();
 	}
@@ -147,7 +176,7 @@ util.ficheroLog("Ocurrio un error en cerrarSesion :"+e.getMessage());
 		try {
 			util.ficheroLog("Usuario entro en eliminar usuario");
 			service.getAllUsu(session);
-			String respuesta = service.Delete(correo);
+			String respuesta = service.Eliminar(correo);
 
 			if (respuesta.equals("Usuario Eliminado")) {
 
@@ -159,7 +188,7 @@ util.ficheroLog("Ocurrio un error en cerrarSesion :"+e.getMessage());
 
 			}
 		} catch (Exception e) {
-			util.ficheroLog("Ocurrio un error en eliminar:"+e.getMessage());
+			util.ficheroLog("Ocurrio un error en eliminar:" + e.getMessage());
 		}
 		return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/index.jsp")).build();
 	}
@@ -192,7 +221,7 @@ util.ficheroLog("Ocurrio un error en cerrarSesion :"+e.getMessage());
 
 			}
 		} catch (Exception e) {
-			util.ficheroLog("Ocurrio un error en actualizar un usuario:"+e.getMessage());
+			util.ficheroLog("Ocurrio un error en actualizar un usuario:" + e.getMessage());
 		}
 		return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/index.jsp")).build();
 	}
@@ -221,7 +250,7 @@ util.ficheroLog("Ocurrio un error en cerrarSesion :"+e.getMessage());
 
 			}
 		} catch (Exception e) {
-			util.ficheroLog("Ocurrio un error en la recuperacion de contraseña:"+e.getMessage());
+			util.ficheroLog("Ocurrio un error en la recuperacion de contraseña:" + e.getMessage());
 		}
 		return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/index.jsp")).build();
 	}
@@ -252,7 +281,7 @@ util.ficheroLog("Ocurrio un error en cerrarSesion :"+e.getMessage());
 
 			}
 		} catch (Exception e) {
-			util.ficheroLog("Ocurrio un error en escribir contraseña nueva:"+e.getMessage());
+			util.ficheroLog("Ocurrio un error en escribir contraseña nueva:" + e.getMessage());
 		}
 		return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/bonsaissur/index.jsp")).build();
 	}

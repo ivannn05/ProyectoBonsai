@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Service;
 
@@ -110,7 +111,7 @@ public class Services {
 				listaUsu = usuarios; // Actualizar la lista local
 
 				usu.setContrasena(contrasena);
-				System.out.println(contrasena);
+
 				usu.setCorreo(correo);
 				boolean comprobacion = false;
 				for (Usuario Aux : listaUsu) {
@@ -158,6 +159,101 @@ public class Services {
 		return usu;
 	}
 
+	// Almacenamiento temporal de usuarios no confirmados
+	private ConcurrentHashMap<String, Usuario> usuariosPendientes = new ConcurrentHashMap<>();
+/**
+ * Metodos que recibe los datos delregistro
+ * @param nombre
+ * @param apellidos
+ * @param correo
+ * @param direccion
+ * @param telefono
+ * @param contrasena
+ * @param rol
+ * @return
+ */
+	public String DatosRegistro(String nombre, String apellidos, String correo, String direccion, String telefono,
+			String contrasena, String rol) {
+
+		try {
+
+			// Crear un usuario
+			Usuario usuario = new Usuario();
+			usuario.setNombre(nombre);
+			usuario.setApellidos(apellidos);
+			usuario.setCorreo(correo);
+			usuario.setDireccion(direccion);
+			usuario.setTelefono(telefono);
+			usuario.setContrasena(contrasena);
+
+			Timestamp fechaRegistro = Timestamp.from(Instant.now());
+			usuario.setFechaRegistro(fechaRegistro);
+			usuario.setRol(rol);
+			// Generar token de confirmación
+			String token = UUID.randomUUID().toString();
+			usuario.setTokenConfirmacionUsu(token);
+			usuario.setActivo(false);
+
+			usuariosPendientes.put(token, usuario);
+			
+			// Convertir el objeto a JSON
+			enviarCorreoConfirUsu(correo, "Dele a este enlace para verificar su cuenta:", token);
+			return "Enviado";
+
+		} catch (Exception e) {
+			util.ficheroLog("Ocurrio un error en el servicio crear Usuario:" + e.getMessage());
+			return "Ocurrio un error";
+			
+		}
+	}
+	/**
+	 * Metodo que enviar el correo de verificacion del usuario
+	 * @param correoDestinatario
+	 * @param asunto
+	 * @param token
+	 * @throws MessagingException
+	 */
+	public void enviarCorreoConfirUsu(String correoDestinatario, String asunto, String token)
+			throws MessagingException {
+		Session session = configurarServidorSMTP();
+		MimeMessage mimeMessage = new MimeMessage(session);
+		String mensaje = "http://localhost:8080/bonsaissur/confirmarUsu?token=";
+		mimeMessage.setFrom(new InternetAddress(REMITENTE));
+		mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correoDestinatario));
+		mimeMessage.setSubject(asunto);
+		mimeMessage.setText(mensaje + token, "utf-8");
+
+		Transport.send(mimeMessage);
+		System.out.println("[Correo enviado a " + correoDestinatario + "]");
+	}
+	/**
+	 * Metodo que verfifica la confirmacion de la cuenta
+	 * @param token
+	 * @return
+	 */
+	public String confirmarCuenta(String token) {
+	    // Verificamos si el token existe en el mapa de usuarios pendientes
+	    Usuario usuario = usuariosPendientes.get(token);
+	    
+	    if (usuario == null) {
+	        // Si el token no existe o ya ha sido usado
+	        return "Token inválido o ya confirmado.";
+	    }
+	    
+	    // Activamos la cuenta del usuario
+	    usuario.setActivo(true);
+	    usuario.setTokenConfirmacionUsu(null);  // Limpiar el token de confirmación
+	    
+	    // Guardamos el usuario en la base de datos (suponiendo que tienes un servicio para esto)
+	    Post(usuario.getNombre(),usuario.getApellidos(),usuario.getCorreo(),usuario.getDireccion(),usuario.getTelefono(),usuario.getContrasena(),usuario.getRol());
+	    
+	    // Eliminamos el usuario del mapa de usuarios pendientes
+	    usuariosPendientes.remove(token);
+	    
+	    return "Cuenta activada con éxito.";
+	}
+
+
 	/**
 	 * Metodo encargado de crear usuario
 	 * 
@@ -186,6 +282,7 @@ public class Services {
 			usuario.setDireccion(direccion);
 			usuario.setTelefono(telefono);
 			usuario.setContrasena(contrasena);
+
 			Timestamp fechaRegistro = Timestamp.from(Instant.now());
 			usuario.setFechaRegistro(fechaRegistro);
 			usuario.setRol(rol);
@@ -216,7 +313,7 @@ public class Services {
 	 * @param correo
 	 * @return
 	 */
-	public String Delete(String correo) {
+	public String Eliminar(String correo) {
 		String respuesta = "";
 		try {
 
@@ -360,7 +457,7 @@ public class Services {
 	private static final String CONTRASENA = "msprjeksnbhekmjc";
 
 	// Metodo que envia el correo al destinatario
-	public void enviarCorreo(String correoDestinatario, String asunto, String token) throws MessagingException {
+	public void enviarCorreoToken(String correoDestinatario, String asunto, String token) throws MessagingException {
 		Session session = configurarServidorSMTP();
 		MimeMessage mimeMessage = new MimeMessage(session);
 		String mensaje = "http://localhost:8080/bonsaissur/nuevaContrasena.jsp?token=";
@@ -372,6 +469,8 @@ public class Services {
 		Transport.send(mimeMessage);
 		System.out.println("[Correo enviado a " + correoDestinatario + "]");
 	}
+
+	
 
 	private Session configurarServidorSMTP() {
 		Properties props = new Properties();
@@ -435,7 +534,7 @@ public class Services {
 				// Calcular la fecha de expiración del token (1 hora desde ahora)
 				usuario.setFechaToken(new Timestamp(System.currentTimeMillis() + 3600000));
 				System.out.println(usuario.toString());
-				enviarCorreo(correoDestinatario, "Recuperacion de contraseña", token);
+				enviarCorreoToken(correoDestinatario, "Recuperacion de contraseña", token);
 				resp = "Correo existente";
 
 			}

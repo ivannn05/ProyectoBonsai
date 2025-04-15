@@ -1,6 +1,7 @@
 package tienda.bonsaissur.dtos;
 
 import java.sql.Timestamp;
+
 /**
  * Clase dto encargada de contener los campos del Usuario
  */
@@ -11,26 +12,29 @@ public class Usuario {
     private String apellidos;
     private String correo;
     private String direccion;
-    private String telefono;  // Nuevo campo para teléfono
+    private String telefono;
     private String contrasena;
     private Timestamp fechaRegistro;
     private String rol;
-    private String token; // Nuevo campo para el token
-    private Timestamp fechaToken; // Nuevo campo para la fecha de caducidad del token
-    private byte[] fotoUsu; // Nuevo campo para la foto de usuario
+    private String token;
+    private Timestamp fechaToken;
+    private byte[] fotoUsu;
+    private boolean activo;
+    private String tokenConfirmacionUsu; 
 
     // Constructor vacío
     public Usuario() {
     }
 
-    // Constructor con parámetros, incluyendo los nuevos campos telefono, fotoUsu, token y fechaToken
-    public Usuario(Long id, String nombre, String apellidos, String correo, String telefono, String direccion, 
-                   String contrasena, Timestamp fechaRegistro, String rol, String token, Timestamp fechaToken, byte[] fotoUsu) {
+    // Constructor con parámetros
+    public Usuario(Long id, String nombre, String apellidos, String correo, String telefono, String direccion,
+                   String contrasena, Timestamp fechaRegistro, String rol, String token, Timestamp fechaToken,
+                   byte[] fotoUsu, boolean activo, String tokenConfirmacionUsu) {
         this.id = id;
-        this.telefono = telefono;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
+        this.telefono = telefono;
         this.direccion = direccion;
         this.contrasena = contrasena;
         this.fechaRegistro = fechaRegistro;
@@ -38,6 +42,8 @@ public class Usuario {
         this.token = token;
         this.fechaToken = fechaToken;
         this.fotoUsu = fotoUsu;
+        this.activo = activo;
+        this.tokenConfirmacionUsu = tokenConfirmacionUsu;
     }
 
     // Getters y Setters
@@ -55,14 +61,6 @@ public class Usuario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
     }
 
     public String getApellidos() {
@@ -87,6 +85,14 @@ public class Usuario {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getContrasena() {
@@ -137,6 +143,22 @@ public class Usuario {
         this.fotoUsu = fotoUsu;
     }
 
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    public String getTokenConfirmacionUsu() {
+        return tokenConfirmacionUsu;
+    }
+
+    public void setTokenConfirmacionUsu(String tokenConfirmacionUsu) {
+        this.tokenConfirmacionUsu = tokenConfirmacionUsu;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -149,9 +171,11 @@ public class Usuario {
                 ", contrasena='" + contrasena + '\'' +
                 ", fechaRegistro=" + fechaRegistro +
                 ", rol='" + rol + '\'' +
-                ", token='" + token + '\'' + // Mostrar el token
+                ", token='" + token + '\'' +
                 ", fechaToken=" + fechaToken +
-                ", fotoUsu=" + (fotoUsu != null ? fotoUsu.length : 0) + " bytes" + // Mostrar el tamaño de la foto
+                ", fotoUsu=" + (fotoUsu != null ? fotoUsu.length : 0) + " bytes" +
+                ", activo=" + activo +
+                ", tokenConfirmacionUsu='" + tokenConfirmacionUsu + '\'' +
                 '}';
     }
 }

@@ -102,7 +102,42 @@
                     <div class="col-lg-8">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <!-- Contenido de la página -->
+                               <section class="container mt-5">
+    <h2 class="text-center mb-4">Carrito de la compra</h2>
+    <div class="table-responsive">
+        <table class="table align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Imagen</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Producto 1 (de ejemplo) -->
+                <tr>
+                    <td><img src="imagenes/bonsai1.jpg" alt="Producto" style="width: 80px;"></td>
+                    <td>Bonsái Olivo</td>
+                    <td>25.00€</td>
+                    <td>
+                        <input type="number" value="1" min="1" class="form-control" style="width: 70px; margin: auto;">
+                    </td>
+                    <td>25.00€</td>
+                    <td><button class="btn btn-danger"><i class="bi bi-trash"></i></button></td>
+                </tr>
+                <!-- Puedes duplicar <tr> para más productos -->
+            </tbody>
+        </table>
+    </div>
+    <div class="text-end mt-3">
+        <h4>Total: 25.00€</h4>
+        <button class="btn btn-success">Finalizar compra</button>
+    </div>
+</section>
+
                             </div>
                         </div>
                     </div>
