@@ -118,6 +118,19 @@ body {
     font-weight: bold;
    
 }
+.boton-carrito {
+    background-color: #5B8C5A;
+    border-color: #5B8C5A;
+    color: #fff;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.boton-carrito:hover {
+    background-color: #3e6e3d;
+    border-color: #3e6e3d;
+}
+
 
 /* Responsividad */
 @media ( max-width : 768px) {

@@ -97,38 +97,62 @@
 
   <!-- Productos -->
      <!-- Fila 1 -->
-  <div class=" separacion container Ordenadores" id="S2">
+<div class=" separacion container Ordenadores" id="S2">
     <div class="row justify-content-evenly">
-        <div class=" agrandar   col-lg-3 col-md-6  order rounded" type="button">
-
+        <div class=" agrandar col-lg-3 col-md-6 order rounded" type="button">
             <div class="row">
-                <img src="imagenes/Herramienta.jpg" height="300">
-            </div>
-            <div class="row">
-                <div  align="center">
-                    Herramienta 
-                </div>
-            </div>
-
-        </div>
-        <div class=" agrandar    col-lg-3 col-md-6  border rounded" href="#" type="button">
-            <div class="row">
-                <img src="imagenes/Herramienta.jpg" height="300">
+                <img src="imagenes/Herramientas/Regadera.jpg" height="300">
             </div>
             <div class="row">
                 <div align="center">
-                    Herramienta
+                    Regadera 
                 </div>
             </div>
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="7">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
+            </div>
         </div>
-        <div class=" agrandar   col-lg-3 col-md-6  border rounded" href="#" type="button">
+
+        <div class=" agrandar col-lg-3 col-md-6 border rounded" href="#" type="button">
             <div class="row">
-                <img src="imagenes/Herramienta.jpg" height="300">
+                <img src="imagenes/Herramientas/Estuche herramientas bonsais.jpg" height="300">
             </div>
             <div class="row">
                 <div align="center">
-                    Herramienta
+                    Estuche herramientas
                 </div>
+            </div>
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="8">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class=" agrandar col-lg-3 col-md-6 border rounded" href="#" type="button">
+            <div class="row">
+                <img src="imagenes/Herramientas/Pinzas.jpg" height="300">
+            </div>
+            <div class="row">
+                <div align="center">
+                    Pinzas
+                </div>
+            </div>
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="9">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -136,77 +160,65 @@
    <!-- Fila 2 -->
 <div class=" separacion container Ordenadores" id="S2">
     <div class="row justify-content-evenly">
-        <div class=" agrandar   col-lg-3 col-md-6  border rounded" type="button">
-
+        <div class=" agrandar col-lg-3 col-md-6 order rounded" type="button">
             <div class="row">
-                <img src="imagenes/Herramienta.jpg" height="300">
-            </div>
-            <div class="row">
-                <div  align="center">
-                    Herramienta
-                </div>
-            </div>
-
-        </div>
-        <div class=" agrandar    col-lg-3 col-md-6  border rounded" href="#" type="button">
-            <div class="row">
-                <img src="imagenes/Herramienta.jpg" height="300">
+                <img src="imagenes/Herramientas/Tijeras Bonsai.jpg" height="300">
             </div>
             <div class="row">
                 <div align="center">
-                    Herramienta
+                    Tijeras Bonsai 
                 </div>
             </div>
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="10">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
+            </div>
         </div>
-        <div class=" agrandar   col-lg-3 col-md-6  border rounded" href="#" type="button">
+
+        <div class=" agrandar col-lg-3 col-md-6 border rounded" href="#" type="button">
             <div class="row">
-                <img src="imagenes/Herramienta.jpg" height="300">
+                <img src="imagenes/Herramientas/Alicate Concaba.jpg" height="300">
             </div>
             <div class="row">
                 <div align="center">
-                    Herramienta
+                    Alicates Concaba
                 </div>
+            </div>
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="11">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class=" agrandar col-lg-3 col-md-6 border rounded" href="#" type="button">
+            <div class="row">
+                <img src="imagenes/Herramientas/Alambre.jpg" height="300">
+            </div>
+            <div class="row">
+                <div align="center">
+                    Alambre
+                </div>
+            </div>
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="12">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
             </div>
         </div>
     </div>
 </div>
-   <!-- Fila 3 -->
-<div class=" separacion container Ordenadores" id="S2">
-    <div class="row justify-content-evenly">
-        <div class=" agrandar   col-lg-3 col-md-6  border rounded" type="button">
 
-            <div class="row">
-                <img src="imagenes/Herramienta.jpg" height="300">
-            </div>
-            <div class="row">
-                <div  align="center">
-                    Herramienta
-                </div>
-            </div>
-
-        </div>
-        <div class=" agrandar    col-lg-3 col-md-6  border rounded" href="#" type="button">
-            <div class="row">
-                <img src="imagenes/Herramienta.jpg" height="300">
-            </div>
-            <div class="row">
-                <div align="center">
-                    Herramienta
-                </div>
-            </div>
-        </div>
-        <div class=" agrandar   col-lg-3 col-md-6  border rounded" href="#" type="button">
-            <div class="row">
-                <img src="imagenes/Herramienta.jpg" height="300">
-            </div>
-            <div class="row">
-                <div align="center">
-                    Herramienta
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Pie de página -->
 <footer style="background-color: #5B3E34; color: #C4D1AA; text-align: center; padding: 15px 0; margin-top: 20px;">
     <p style="margin: 0; font-size: 1rem;">

@@ -97,116 +97,134 @@
 
   <!-- Productos -->
      <!-- Fila 1 -->
-  <div class=" separacion container Ordenadores" id="S2">
+<div class="separacion container Ordenadores" id="S2">
     <div class="row justify-content-evenly">
-        <div class=" agrandar   col-lg-3 col-md-6  border rounded" type="button">
-
+        <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
             <div class="row">
-                <img src="imagenes/Abono.jpg" height="300">
-            </div>
-            <div class="row">
-                <div  align="center">
-                    Abono 
-                </div>
-            </div>
-
-        </div>
-        <div class=" agrandar    col-lg-3 col-md-6  border rounded" href="#" type="button">
-            <div class="row">
-                <img src="imagenes/Abono.jpg" height="300">
+                <img src="imagenes/Abonos/Abono.jpg" height="300">
             </div>
             <div class="row">
                 <div align="center">
                     Abono
                 </div>
             </div>
+          
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="5">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito	
+                    </button>
+                </form>
+            </div>
         </div>
-        <div class=" agrandar   col-lg-3 col-md-6  border rounded" href="#" type="button">
+        
+        <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
             <div class="row">
-                <img src="imagenes/Abono.jpg" height="300">
+                <img src="imagenes/Abonos/Abono 1,5 KG.jpg" height="300">
             </div>
             <div class="row">
                 <div align="center">
-                    Abono
+                    Abono orgánico 1,5 KG
                 </div>
+            </div>
+          
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="1">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+            <div class="row">
+                <img src="imagenes/Abonos/Abono liquido eco.jpg" height="300">
+            </div>
+            <div class="row">
+                <div align="center">
+                   Abono líquido eco
+                </div>
+            </div>
+            
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="2">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
             </div>
         </div>
     </div>
 </div>
    <!-- Fila 2 -->
-<div class=" separacion container Ordenadores" id="S2">
+<div class="separacion container Ordenadores" id="S2">
     <div class="row justify-content-evenly">
-        <div class=" agrandar   col-lg-3 col-md-6  border rounded" type="button">
-
+        <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
             <div class="row">
-                <img src="imagenes/Abono.jpg" height="300">
-            </div>
-            <div class="row">
-                <div  align="center">
-                    Abono
-                </div>
-            </div>
-
-        </div>
-        <div class=" agrandar    col-lg-3 col-md-6  border rounded" href="#" type="button">
-            <div class="row">
-                <img src="imagenes/Abono.jpg" height="300">
+                <img src="imagenes/Abonos/Abono organico Biogold.jpg" height="300">
             </div>
             <div class="row">
                 <div align="center">
-                    Abono
+                   Abono orgánico Biogold 
                 </div>
             </div>
+           
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="4">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
+            </div>
         </div>
-        <div class=" agrandar   col-lg-3 col-md-6  border rounded" href="#" type="button">
+        
+        <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
             <div class="row">
-                <img src="imagenes/Abono.jpg" height="300">
+                <img src="imagenes/Abonos/Abono liquido.jpg" height="300">
             </div>
             <div class="row">
                 <div align="center">
-                    Abono
+                Abono líquido
                 </div>
+            </div>
+           
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="3">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+            <div class="row">
+                <img src="imagenes/Abonos/Compo Bio Fertilizante.jpg" height="300">
+            </div>
+            <div class="row">
+                <div align="center">
+                  Compo Bio Fertilizante
+                </div>
+            </div>
+           
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="6">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
             </div>
         </div>
     </div>
 </div>
-   <!-- Fila 3 -->
-<div class=" separacion container Ordenadores" id="S2">
-    <div class="row justify-content-evenly">
-        <div class=" agrandar   col-lg-3 col-md-6  border rounded" type="button">
-
-            <div class="row">
-                <img src="imagenes/Abono.jpg" height="300">
-            </div>
-            <div class="row">
-                <div  align="center">
-                    Abono
-                </div>
-            </div>
-
-        </div>
-        <div class=" agrandar    col-lg-3 col-md-6  border rounded" href="#" type="button">
-            <div class="row">
-                <img src="imagenes/Abono.jpg" height="300">
-            </div>
-            <div class="row">
-                <div align="center">
-                    Abono
-                </div>
-            </div>
-        </div>
-        <div class=" agrandar   col-lg-3 col-md-6  border rounded" href="#" type="button">
-            <div class="row">
-                <img src="imagenes/Abono.jpg" height="300">
-            </div>
-            <div class="row">
-                <div align="center">
-                    Abono
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+  
 <!-- Pie de página -->
 <footer style="background-color: #5B3E34; color: #C4D1AA; text-align: center; padding: 15px 0; margin-top: 20px;">
     <p style="margin: 0; font-size: 1rem;">

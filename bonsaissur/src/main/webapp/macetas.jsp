@@ -93,93 +93,129 @@
     </nav>
 
     <!-- Bloque de Contenido -->
-    <!-- Productos1 -->
-    <div class="separacion container Ordenadores" id="S2">
-        <div class="row justify-content-evenly">
-            <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
-                <div class="row">
-                    <img src="imagenes/Macetas.jpg" height="300">
-                </div>
-                <div class="row">
-                    <div align="center">Maceta</div>
+  <!-- Fila 1 -->
+<div class="separacion container Ordenadores" id="S2">
+    <div class="row justify-content-evenly">
+        <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+            <div class="row">
+                <img src="imagenes/Macetas/Maceta barro.jpg" height="300">
+            </div>
+            <div class="row">
+                <div align="center">
+                    Maceta de barro
                 </div>
             </div>
-            <div class="agrandar col-lg-3 col-md-6 border rounded" href="#" type="button">
-                <div class="row">
-                    <img src="imagenes/Macetas.jpg" height="300">
-                </div>
-                <div class="row">
-                    <div align="center">Maceta</div>
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="13">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+            <div class="row">
+                <img src="imagenes/Macetas/Ceramica baja.jpg" height="300">
+            </div>
+            <div class="row">
+                <div align="center">
+                    Maceta Ceramica
                 </div>
             </div>
-            <div class="agrandar col-lg-3 col-md-6 border rounded" href="#" type="button">
-                <div class="row">
-                    <img src="imagenes/Macetas.jpg" height="300">
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="14">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+            <div class="row">
+                <img src="imagenes/Macetas/Maceta esmaltada.png" height="300">
+            </div>
+            <div class="row">
+                <div align="center">
+                    Maceta esmaltada
                 </div>
-                <div class="row">
-                    <div align="center">Maceta</div>
-                </div>
+            </div>
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="15">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
             </div>
         </div>
     </div>
-    <!-- Productos 2 -->
-    <div class="separacion container Ordenadores" id="S2">
-        <div class="row justify-content-evenly">
-            <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
-                <div class="row">
-                    <img src="imagenes/Macetas.jpg" height="300">
-                </div>
-                <div class="row">
-                    <div align="center">Maceta</div>
+</div>
+  <!-- Fila 2 -->
+<div class="separacion container Ordenadores" id="S2">
+    <div class="row justify-content-evenly">
+        <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+            <div class="row">
+                <img src="imagenes/Macetas/Maceta plastico.jpg" height="300">
+            </div>
+            <div class="row">
+                <div align="center">
+                  Maceta plastico
                 </div>
             </div>
-            <div class="agrandar col-lg-3 col-md-6 border rounded" href="#" type="button">
-                <div class="row">
-                    <img src="imagenes/Macetas.jpg" height="300">
-                </div>
-                <div class="row">
-                    <div align="center">Maceta</div>
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="16">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+            <div class="row">
+                <img src="imagenes/Macetas/Maceta japonesa.jpg" height="300">
+            </div>
+            <div class="row">
+                <div align="center">
+                    Maceta japonesa
                 </div>
             </div>
-            <div class="agrandar col-lg-3 col-md-6 border rounded" href="#" type="button">
-                <div class="row">
-                    <img src="imagenes/Macetas.jpg" height="300">
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="17">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+            <div class="row">
+                <img src="imagenes/Macetas/Maceta sin esmaltar.jpg" height="300">
+            </div>
+            <div class="row">
+                <div align="center">
+                  Maceta sin esmaltar
                 </div>
-                <div class="row">
-                    <div align="center">Maceta</div>
-                </div>
+            </div>
+            <div class="row justify-content-center my-2">
+                <form action="carrito" method="post" class="d-flex justify-content-center">
+                    <input type="hidden" name="productoId" value="18">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                    </button>
+                </form>
             </div>
         </div>
     </div>
-    <!-- Productos 3 -->
-    <div class="separacion container Ordenadores" id="S2">
-        <div class="row justify-content-evenly">
-            <div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
-                <div class="row">
-                    <img src="imagenes/Macetas.jpg" height="300">
-                </div>
-                <div class="row">
-                    <div align="center">Maceta</div>
-                </div>
-            </div>
-            <div class="agrandar col-lg-3 col-md-6 border rounded" href="#" type="button">
-                <div class="row">
-                    <img src="imagenes/Macetas.jpg" height="300">
-                </div>
-                <div class="row">
-                    <div align="center">Maceta</div>
-                </div>
-            </div>
-            <div class="agrandar col-lg-3 col-md-6 border rounded" href="#" type="button">
-                <div class="row">
-                    <img src="imagenes/Macetas.jpg" height="300">
-                </div>
-                <div class="row">
-                    <div align="center">Maceta</div>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
+ 
 
     <!-- Pie de página -->
     <footer style="background-color: #5B3E34; color: #C4D1AA; text-align: center; padding: 15px 0; margin-top: 20px;">

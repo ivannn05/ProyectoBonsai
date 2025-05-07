@@ -109,107 +109,112 @@
 
 	<!-- Productos -->
 	<!-- Fila 1 -->
-	<div class=" separacion container Ordenadores" id="S2">
-		<div class="row justify-content-evenly">
-			<div class=" agrandar   col-lg-3 col-md-6  border rounded"
-				type="button">
-
-				<div class="row">
-					<img src="imagenes/Bogambilla.jpg" height="300">
-				</div>
-				<div class="row">
-					<div align="center">Bonsai</div>
-				</div>
-
+<div class=" separacion container Ordenadores" id="S2">
+	<div class="row justify-content-evenly">
+		<div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+			<div class="row">
+				<img src="imagenes/Arboles/Pino negro.jpg" height="300">
 			</div>
-			<div class=" agrandar    col-lg-3 col-md-6  border rounded" href="#"
-				type="button">
-				<div class="row">
-					<img src="imagenes/Bogambilla.jpg" height="300">
-				</div>
-				<div class="row">
-					<div align="center">Bonsai</div>
+			<div class="row">
+				<div align="center">Pino negro</div>
+				<div class="text-center my-2">
+					<form action="carrito" method="post">
+						<input type="hidden" name="productoId" value="19">
+						<button type="submit" class="btn btn-success boton-carrito">
+							<i class="bi bi-cart-plus"></i> Añadir al carrito
+						</button>
+					</form>
 				</div>
 			</div>
-			<div class=" agrandar   col-lg-3 col-md-6  border rounded" href="#"
-				type="button">
-				<div class="row">
-					<img src="imagenes/Bogambilla.jpg" height="300">
+		</div>
+		<div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+			<div class="row">
+				<img src="imagenes/Arboles/Arbol bolitas.jpg" height="300">
+			</div>
+			<div class="row">
+				<div align="center">Arbol con fruto</div>
+				<div class="text-center my-2">
+					<form action="carrito" method="post">
+						<input type="hidden" name="productoId" value="20">
+						<button type="submit" class="btn btn-success boton-carrito">
+							<i class="bi bi-cart-plus"></i> Añadir al carrito
+						</button>
+					</form>
 				</div>
-				<div class="row">
-					<div align="center">Bonsai</div>
+			</div>
+		</div>
+		<div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+			<div class="row">
+				<img src="imagenes/Arboles/Arbol flores.jpg" height="300">
+			</div>
+			<div class="row">
+				<div align="center">Arbol con flor</div>
+				<div class="text-center my-2">
+					<form action="carrito" method="post">
+						<input type="hidden" name="productoId" value="21">
+						<button type="submit" class="btn btn-success boton-carrito">
+							<i class="bi bi-cart-plus"></i> Añadir al carrito
+						</button>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 	<!-- Fila 2 -->
 	<div class=" separacion container Ordenadores" id="S2">
-		<div class="row justify-content-evenly">
-			<div class=" agrandar   col-lg-3 col-md-6  border rounded"
-				type="button">
-
-				<div class="row">
-					<img src="imagenes/Bogambilla.jpg" height="300">
-				</div>
-				<div class="row">
-					<div align="center">Bonsai</div>
-				</div>
-
+	<div class="row justify-content-evenly">
+		<div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+			<div class="row">
+				<img src="imagenes/Arboles/ARCE Bulgueriano.jpg" height="300">
 			</div>
-			<div class=" agrandar    col-lg-3 col-md-6  border rounded" href="#"
-				type="button">
-				<div class="row">
-					<img src="imagenes/Bogambilla.jpg" height="300">
-				</div>
-				<div class="row">
-					<div align="center">Bonsai</div>
+			<div class="row">
+				<div align="center">Arce Bulgueriano</div>
+				<div class="text-center my-2">
+					<form action="carrito" method="post">
+						<input type="hidden" name="productoId" value="22">
+						<button type="submit" class="btn btn-success boton-carrito">
+							<i class="bi bi-cart-plus"></i> Añadir al carrito
+						</button>
+					</form>
 				</div>
 			</div>
-			<div class=" agrandar   col-lg-3 col-md-6  border rounded" href="#"
-				type="button">
-				<div class="row">
-					<img src="imagenes/Bogambilla.jpg" height="300">
+		</div>
+		<div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+			<div class="row">
+				<img src="imagenes/Arboles/Pino.jpg" height="300">
+			</div>
+			<div class="row">
+				<div align="center">Juniperos</div>
+				<div class="text-center my-2">
+					<form action="carrito" method="post">
+						<input type="hidden" name="productoId" value="23">
+						<button type="submit" class="btn btn-success boton-carrito">
+							<i class="bi bi-cart-plus"></i> Añadir al carrito
+						</button>
+					</form>
 				</div>
-				<div class="row">
-					<div align="center">Bonsai</div>
+			</div>
+		</div>
+		<div class="agrandar col-lg-3 col-md-6 border rounded" type="button">
+			<div class="row">
+				<img src="imagenes/Arboles/Azalea.jpg" height="300">
+			</div>
+			<div class="row">
+				<div align="center">Azalea</div>
+				<div class="text-center my-2">
+					<form action="carrito" method="post">
+						<input type="hidden" name="productoId" value="24">
+						<button type="submit" class="btn btn-success boton-carrito">
+							<i class="bi bi-cart-plus"></i> Añadir al carrito
+						</button>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- Fila 3 -->
-	<div class=" separacion container Ordenadores" id="S2">
-		<div class="row justify-content-evenly">
-			<div class=" agrandar   col-lg-3 col-md-6  border rounded"
-				type="button">
-
-				<div class="row">
-					<img src="imagenes/Bogambilla.jpg" height="300">
-				</div>
-				<div class="row">
-					<div align="center">Bonsai</div>
-				</div>
-
-			</div>
-			<div class=" agrandar    col-lg-3 col-md-6  border rounded" href="#"
-				type="button">
-				<div class="row">
-					<img src="imagenes/Bogambilla.jpg" height="300">
-				</div>
-				<div class="row">
-					<div align="center">Bonsai</div>
-				</div>
-			</div>
-			<div class=" agrandar   col-lg-3 col-md-6  border rounded" href="#"
-				type="button">
-				<div class="row">
-					<img src="imagenes/Bogambilla.jpg" height="300">
-				</div>
-				<div class="row">
-					<div align="center">Bonsai</div>
-				</div>
-			</div>
-		</div>
-	</div>
+</div>
+	
 	<!-- Pie de página -->
 	<footer
 		style="background-color: #5B3E34; color: #C4D1AA; text-align: center; padding: 15px 0; margin-top: 20px;">

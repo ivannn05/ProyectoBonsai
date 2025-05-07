@@ -96,17 +96,17 @@
 	<div class="container my-4">
 		<div class="content-block">
 			<div class="left-image agrandar">
-				<a href="herramientas.jsp"><img src="imagenes/Herramienta.jpg"
+				<a href="herramientas.jsp"><img src="imagenes/Herramientas/Herramienta.jpg"
 					alt="Herramientas"></a>
 			</div>
 			<div class="center-images">
 				<a class="agrandar" href="arboles.jsp"><img
-					src="imagenes/Bogambilla.jpg" alt="Bonsái"></a> <a
+					src="imagenes/Arboles/Bogambilla.jpg" alt="Bonsái"></a> <a
 					class="agrandar" href="macetas.jsp"><img
-					src="imagenes/Macetas.jpg" alt="Macetas"></a>
+					src="imagenes/Macetas/Macetas.jpg" alt="Macetas"></a>
 			</div>
 			<div class="right-image agrandar">
-				<a href="abonos.jsp"><img src="imagenes/Abono.jpg" alt="Abonos"></a>
+				<a href="abonos.jsp"><img src="imagenes/Abonos/Abono.jpg" alt="Abonos"></a>
 			</div>
 		</div>
 	</div>
@@ -116,7 +116,7 @@
 		<img src="imagenes/Repisas.png" alt="Fondo" class="w-100">
 		<div
 			class="position-absolute top-50 start-50 translate-middle text-white bg-dark bg-opacity-50 p-4 rounded">
-			<h1 class="fw-bold">¿QUIÉNES SOMOS?</h1>
+			<h1 class="fw-bold" align="center">¿QUIÉNES SOMOS?</h1>
 			<p>Esta tienda es un proyecto de fin de grado donde se muestran
 				imágenes de árboles en disponibilidad.</p>
 		</div>

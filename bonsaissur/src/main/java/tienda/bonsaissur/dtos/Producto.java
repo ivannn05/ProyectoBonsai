@@ -8,108 +8,85 @@ import java.sql.Timestamp;
  */
 public class Producto {
 
-    private Long idProducto;
-    private String nombre;
-    private String categoria;
-    private String descripcion;
-    private BigDecimal precio;
-    private Integer stock;
-    private String imagenUrl;
-    private Timestamp fechaCreacion;
+	private Long idProducto;
+	private String nombre;
+	private String categoria;
+	private BigDecimal precio;
+	private Integer stock;
+	private String imagenUrl;
 
-    // Constructor vacío
-    public Producto() {
-    }
+	// Constructor vacío
+	public Producto() {
+	}
 
-    // Constructor con parámetros
-    public Producto(Long idProducto, String nombre, String categoria, String descripcion, 
-                    BigDecimal precio, Integer stock, String imagenUrl, Timestamp fechaCreacion) {
-        this.idProducto = idProducto;
-        this.nombre = nombre;
-        this.categoria = categoria;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.stock = stock;
-        this.imagenUrl = imagenUrl;
-        this.fechaCreacion = fechaCreacion;
-    }
+	// Constructor con parámetros
+	public Producto(Long idProducto, String nombre, String categoria, BigDecimal precio, Integer stock,
+			String imagenUrl) {
+		this.idProducto = idProducto;
+		this.nombre = nombre;
+		this.categoria = categoria;
+		this.precio = precio;
+		this.stock = stock;
+		this.imagenUrl = imagenUrl;
+	
+	}
 
-    // Getters y Setters
-    public Long getIdProducto() {
-        return idProducto;
-    }
+	// Getters y Setters
+	public Long getIdProducto() {
+		return idProducto;
+	}
 
-    public void setIdProducto(Long idProducto) {
-        this.idProducto = idProducto;
-    }
+	public void setIdProducto(Long idProducto) {
+		this.idProducto = idProducto;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public String getCategoria() {
-        return categoria;
-    }
+	public String getCategoria() {
+		return categoria;
+	}
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public BigDecimal getPrecio() {
+		return precio;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	public void setPrecio(BigDecimal precio) {
+		this.precio = precio;
+	}
 
-    public BigDecimal getPrecio() {
-        return precio;
-    }
+	public Integer getStock() {
+		return stock;
+	}
 
-    public void setPrecio(BigDecimal precio) {
-        this.precio = precio;
-    }
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
 
-    public Integer getStock() {
-        return stock;
-    }
+	public String getImagenUrl() {
+		return imagenUrl;
+	}
 
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
+	public void setImagenUrl(String imagenUrl) {
+		this.imagenUrl = imagenUrl;
+	}
 
-    public String getImagenUrl() {
-        return imagenUrl;
-    }
+	
 
-    public void setImagenUrl(String imagenUrl) {
-        this.imagenUrl = imagenUrl;
-    }
+	@Override
+	public String toString() {
+		return "Producto{" + "idProducto=" + idProducto + ", nombre='" + nombre + '\'' + ", categoria='" + categoria
+				+ '\'' +
 
-    public Timestamp getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(Timestamp fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    @Override
-    public String toString() {
-        return "Producto{" +
-                "idProducto=" + idProducto +
-                ", nombre='" + nombre + '\'' +
-                ", categoria='" + categoria + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", precio=" + precio +
-                ", stock=" + stock +
-                ", imagenUrl='" + imagenUrl + '\'' +
-                ", fechaCreacion=" + fechaCreacion +
-                '}';
-    }
+				", precio=" + precio + ", stock=" + stock + ", imagenUrl='" + imagenUrl + '\'' +  '}';
+	}
 }
