@@ -70,7 +70,7 @@
                     <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
                 </form>
                  <!-- Íconos -->
-               <a href="carrito.jsp" class="me-3 icono"><i class="bi bi-cart"></i></a>
+               <a  class="me-3 icono"><i class="bi bi-cart"></i></a>
 				<%
 				Usuario usuario = (Usuario) session.getAttribute("Usuario");
 				if (usuario != null) {
@@ -109,7 +109,7 @@
                 </div>
             </div>
             <div class="row justify-content-center my-2">
-                <form action="carrito" method="post" class="d-flex justify-content-center">
+                <form class="d-flex justify-content-center">
                     <input type="hidden" name="productoId" value="7">
                     <button type="submit" class="btn btn-success">
                         <i class="bi bi-cart-plus"></i> Añadir al carrito
@@ -128,7 +128,7 @@
                 </div>
             </div>
             <div class="row justify-content-center my-2">
-                <form action="carrito" method="post" class="d-flex justify-content-center">
+                <form  class="d-flex justify-content-center">
                     <input type="hidden" name="productoId" value="8">
                     <button type="submit" class="btn btn-success">
                         <i class="bi bi-cart-plus"></i> Añadir al carrito
@@ -147,7 +147,7 @@
                 </div>
             </div>
             <div class="row justify-content-center my-2">
-                <form action="carrito" method="post" class="d-flex justify-content-center">
+                <form class="d-flex justify-content-center">
                     <input type="hidden" name="productoId" value="9">
                     <button type="submit" class="btn btn-success">
                         <i class="bi bi-cart-plus"></i> Añadir al carrito
@@ -170,7 +170,7 @@
                 </div>
             </div>
             <div class="row justify-content-center my-2">
-                <form action="carrito" method="post" class="d-flex justify-content-center">
+                <form  class="d-flex justify-content-center">
                     <input type="hidden" name="productoId" value="10">
                     <button type="submit" class="btn btn-success">
                         <i class="bi bi-cart-plus"></i> Añadir al carrito
@@ -189,7 +189,7 @@
                 </div>
             </div>
             <div class="row justify-content-center my-2">
-                <form action="carrito" method="post" class="d-flex justify-content-center">
+                <form  class="d-flex justify-content-center">
                     <input type="hidden" name="productoId" value="11">
                     <button type="submit" class="btn btn-success">
                         <i class="bi bi-cart-plus"></i> Añadir al carrito
@@ -208,7 +208,7 @@
                 </div>
             </div>
             <div class="row justify-content-center my-2">
-                <form action="carrito" method="post" class="d-flex justify-content-center">
+                <form  class="d-flex justify-content-center">
                     <input type="hidden" name="productoId" value="12">
                     <button type="submit" class="btn btn-success">
                         <i class="bi bi-cart-plus"></i> Añadir al carrito

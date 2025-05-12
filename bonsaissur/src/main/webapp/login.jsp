@@ -95,23 +95,20 @@
 					</button>
 				</form>
 				<!-- Íconos -->
-				<a href="<%=request.getContextPath()%>/carrito.jsp"
-					class="me-3 icono"><i class="bi bi-cart"></i></a> 
-					<a
-					href="<%=request.getContextPath()%>/login.jsp" class="icono"><i
-					class="bi bi-person"></i></a>
-					
-					<!-- Ícono cerrar sesión -->
-					<%
-    Usuario usuario = (Usuario) session.getAttribute("Usuario");
-    if (usuario != null) {
-%>
-    <form action="<%=request.getContextPath()%>/cerrarSesion" method="post">
-        <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
-    </form>
-<%
-    }
-%>
+				<a class="me-3 icono"><i class="bi bi-cart"></i></a> <a
+					class="icono"><i class="bi bi-person"></i></a>
+				<!-- Ícono cerrar sesión -->
+				<%
+				Usuario usuario = (Usuario) session.getAttribute("Usuario");
+				if (usuario != null) {
+				%>
+				<form action="<%=request.getContextPath()%>/cerrarSesion"
+					method="post">
+					<button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+				</form>
+				<%
+				}
+				%>
 			</div>
 		</div>
 	</nav>
@@ -119,17 +116,35 @@
 	<!-- Bloque de Contenido -->
 	<div class="container my-4">
 		<h2 class="text-center mb-4">Acceso a tu Administración</h2>
-		        <!-- Pestañas para alternar entre Login, Registro, Actualización y Eliminación -->
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Iniciar Sesión</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">Registrarse</button>
-            </li>
-           <%
+		<!-- Pestañas para alternar entre Login, Registro, Actualización y Eliminación -->
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="login-tab" data-bs-toggle="tab"
+					data-bs-target="#login" type="button" role="tab"
+					aria-controls="login" aria-selected="true">Iniciar Sesión</button>
+			</li>
+			<%
+			if (usuario.getRol().equals("Administrador")) {
+			%>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="register-tab" data-bs-toggle="tab"
+					data-bs-target="#register" type="button" role="tab"
+					aria-controls="register" aria-selected="false">Crear
+					Usuario</button>
+			</li>
+			<%
+			} else {
+			%>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="register-tab" data-bs-toggle="tab"
+					data-bs-target="#register" type="button" role="tab"
+					aria-controls="register" aria-selected="false">Registrarse</button>
+			</li>
+			<%
+			}
+			%>
+			<%
 			if (usuario != null) {
-				
 			%>
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="update-tab" data-bs-toggle="tab"
@@ -138,8 +153,7 @@
 					Usuario</button>
 			</li>
 			<%
-			
-				if (usuario.getRol().equals("Administrador")) {
+			if (usuario.getRol().equals("Administrador")) {
 			%>
 
 
@@ -150,7 +164,8 @@
 					Usuario</button>
 			</li>
 			<%
-			}else{}
+			} else {
+			}
 			} else {
 			%>
 
@@ -230,39 +245,45 @@
 					<button type="submit" class="btn btn-success w-100">Registrarse</button>
 				</form>
 			</div>
-			   <!-- Formulario de Actualización de Usuario -->
-            <div class="tab-pane fade" id="update" role="tabpanel" aria-labelledby="update-tab">
-                <form action="<%=request.getContextPath()%>/actualizar" method="POST">
-                    <div class="mb-3">
-                        <label for="nombreUpdate" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombreUpdate" name="nombre" placeholder="Introduce tu nombre" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="apellidosUpdate" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidosUpdate" name="apellidos" placeholder="Introduce tus apellidos" required>
-                    </div>
-                   <!--  <div class="mb-3">
+			<!-- Formulario de Actualización de Usuario -->
+			<div class="tab-pane fade" id="update" role="tabpanel"
+				aria-labelledby="update-tab">
+				<form action="<%=request.getContextPath()%>/actualizar"
+					method="POST">
+					<div class="mb-3">
+						<label for="nombreUpdate" class="form-label">Nombre</label> <input
+							type="text" class="form-control" id="nombreUpdate" name="nombre"
+							value="<%=usuario.getNombre()%>" required>
+					</div>
+					<div class="mb-3">
+						<label for="apellidosUpdate" class="form-label">Apellidos</label>
+						<input type="text" class="form-control" id="apellidosUpdate"
+							name="apellidos" value="<%=usuario.getApellidos()%>" required>
+					</div>
+					<!--  <div class="mb-3">
                         <label for="correoUpdate" class="form-label">Correo Electrónico</label>
                         <input type="email" class="form-control" id="correoUpdate" name="correo" placeholder="Introduce tu correo electrónico" required>
                     </div> -->
-                    <div class="mb-3">
-                        <label for="direccionUpdate" class="form-label">Dirección</label>
-                        <input type="text" class="form-control" id="direccionUpdate" name="direccion" placeholder="Introduce tu dirección" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="telefonoUpdate" class="form-label">Teléfono</label>
-                        <input type="text" class="form-control" id="telefonoUpdate" name="telefono" placeholder="Introduce tu teléfono" required>
-                    </div>
-                    <button type="submit" class="btn btn-warning w-100">Actualizar Usuario</button>
-                </form>
-            </div>
-<%
-  
-    if (usuario!=null) {
-%>
+					<div class="mb-3">
+						<label for="direccionUpdate" class="form-label">Dirección</label>
+						<input type="text" class="form-control" id="direccionUpdate"
+							name="direccion" value="<%=usuario.getDireccion()%>" required>
+					</div>
+					<div class="mb-3">
+						<label for="telefonoUpdate" class="form-label">Teléfono</label> <input
+							type="text" class="form-control" id="telefonoUpdate"
+							name="telefono" value="<%=usuario.getTelefono()%>" required>
+					</div>
+					<button type="submit" class="btn btn-warning w-100">Actualizar
+						Usuario</button>
+				</form>
+			</div>
+			<%
+			if (usuario != null) {
+			%>
 
-        
-        
+
+
 			<!-- Formulario de Eliminar Usuario -->
 			<div class="tab-pane fade" id="eliminar" role="tabpanel"
 				aria-labelledby="eliminar-tab">
@@ -274,46 +295,49 @@
 							name="correo" id="correoEliminar"
 							placeholder="Introduce el correo electrónico" required>
 					</div>
-					
-					
+
+
 					<button type="submit" class="btn btn-danger w-100">Eliminar
 						Usuario</button>
 				</form>
-		<!-- Lista de Usuarios -->
-			<%
-    List<Usuario> listaUsuarios = (ArrayList) session.getAttribute("listaUsuarios");
-%>
-<br>
-<br>
-	<h2 style="text-align: center;">Usuarios Registrados</h2>
-<table border="1" style="margin: 0 auto; text-align: center;">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% for (Usuario usua : listaUsuarios) { %>
-            <tr>
-                <td><%= usua.getNombre() %></td>
-                <td><%= usua.getCorreo() %></td>
-            </tr>
-        <% } %>
-    </tbody>
-</table>
+				<!-- Lista de Usuarios -->
+				<%
+				List<Usuario> listaUsuarios = (ArrayList) session.getAttribute("listaUsuarios");
+				%>
+				<br> <br>
+				<h2 style="text-align: center;">Usuarios Registrados</h2>
+				<table border="1" style="margin: 0 auto; text-align: center;">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+						for (Usuario usua : listaUsuarios) {
+						%>
+						<tr>
+							<td><%=usua.getNombre()%></td>
+							<td><%=usua.getCorreo()%></td>
+						</tr>
+						<%
+						}
+						%>
+					</tbody>
+				</table>
 			</div>
-	
-  
+
+
 			<%
-    } else {
-%>
-    
-<%
-    }
-%>
+			} else {
+			%>
+
+			<%
+			}
+			%>
 			<!-- Script de validación para la confirmación de contraseña -->
-			
+
 		</div>
 
 	</div>

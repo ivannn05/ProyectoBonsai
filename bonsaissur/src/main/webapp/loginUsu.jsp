@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+
 <%@ page import="tienda.bonsaissur.dtos.Usuario" %>
 
 <!DOCTYPE html>
@@ -22,7 +21,7 @@
 </head>
 <body>
 
-	<!-- Barra de Navegaci√≥n -->
+	<!-- Barra de NavegaciÛn -->
 	<nav class="navbar navbar-expand-lg navbar-dark">
 		<div class="container-fluid">
 			<!-- Logo -->
@@ -30,14 +29,14 @@
 				src="imagenes/LogoTienda.jpg" alt="Logo Bonsai Sur"> BONSAI
 				SUR
 			</a>
-			<!-- Bot√≥n hamburguesa -->
+			<!-- BotÛn hamburguesa -->
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false"
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<!-- Men√∫ -->
+			<!-- Men˙ -->
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link"
@@ -47,9 +46,9 @@
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">ARBOLES</a>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item"
-								href="<%=request.getContextPath()%>/arboles.jsp">Bons√°is</a></li>
+								href="<%=request.getContextPath()%>/arboles.jsp">Bons·is</a></li>
 							<li><a class="dropdown-item"
-								href="<%=request.getContextPath()%>/arboles.jsp">Prebons√°is</a></li>
+								href="<%=request.getContextPath()%>/arboles.jsp">Prebons·is</a></li>
 						</ul></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle"
@@ -58,9 +57,9 @@
 						aria-expanded="false">MACETAS</a>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item"
-								href="<%=request.getContextPath()%>/macetas.jsp">Cer√°mica</a></li>
+								href="<%=request.getContextPath()%>/macetas.jsp">Cer·mica</a></li>
 							<li><a class="dropdown-item"
-								href="<%=request.getContextPath()%>/macetas.jsp">Pl√°stico</a></li>
+								href="<%=request.getContextPath()%>/macetas.jsp">Pl·stico</a></li>
 						</ul></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle"
@@ -69,9 +68,9 @@
 						aria-expanded="false">ABONOS</a>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item"
-								href="<%=request.getContextPath()%>/abonos.jsp">Org√°nicos</a></li>
+								href="<%=request.getContextPath()%>/abonos.jsp">Org·nicos</a></li>
 							<li><a class="dropdown-item"
-								href="<%=request.getContextPath()%>/abonos.jsp">Qu√≠micos</a></li>
+								href="<%=request.getContextPath()%>/abonos.jsp">QuÌmicos</a></li>
 						</ul></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#"
@@ -84,7 +83,7 @@
 								href="<%=request.getContextPath()%>/herramientas.jsp">Mantenimiento</a></li>
 						</ul></li>
 				</ul>
-				<!-- Barra de b√∫squeda -->
+				<!-- Barra de b˙squeda -->
 				<form class="d-flex me-3">
 					<input class="form-control me-2" type="search"
 						placeholder="Buscar..." aria-label="Search">
@@ -92,19 +91,19 @@
 						<i class="bi bi-search"></i>
 					</button>
 				</form>
-				<!-- √çconos -->
-				<a href="<%=request.getContextPath()%>/carrito.jsp"
+				<!-- Õconos -->
+				<a 
 					class="me-3 icono"><i class="bi bi-cart"></i></a> <a
-					href="<%=request.getContextPath()%>/login.jsp" class="icono"><i
+				 class="icono"><i
 					class="bi bi-person"></i></a>
-				<!-- √çcono cerrar sesi√≥n -->
+				<!-- Õcono cerrar sesiÛn -->
 				<%
 				Usuario usuario = (Usuario) session.getAttribute("Usuario");
 				if (usuario != null) {
 				%>
 				<form action="<%=request.getContextPath()%>/cerrarSesion"
 					method="post">
-					<button type="submit" class="btn btn-danger">Cerrar Sesi√≥n</button>
+					<button type="submit" class="btn btn-danger">Cerrar SesiÛn</button>
 				</form>
 				<%
 				}
@@ -116,18 +115,26 @@
 	<!-- Bloque de Contenido -->
 	<div class="container my-4">
 		<h2 class="text-center mb-4">Acceso a tu Cuenta</h2>
-		<!-- Pesta√±as para alternar entre Login, Registro, Actualizaci√≥n y Eliminaci√≥n -->
+		<!-- PestaÒas para alternar entre Login, Registro, ActualizaciÛn y EliminaciÛn -->
+
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<%
+		   if (usuario==null) {
+%>
 			<li class="nav-item" role="presentation">
 				<button class="nav-link active" id="login-tab" data-bs-toggle="tab"
 					data-bs-target="#login" type="button" role="tab"
-					aria-controls="login" aria-selected="true">Iniciar Sesi√≥n</button>
+					aria-controls="login" aria-selected="true">Iniciar SesiÛn</button>
 			</li>
+	
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="register-tab" data-bs-toggle="tab"
 					data-bs-target="#register" type="button" role="tab"
 					aria-controls="register" aria-selected="false">Registrarse</button>
 			</li>
+				<%
+			}
+			%>
 			<%
 			if (usuario != null) {
 			%>
@@ -147,7 +154,10 @@
 			%>
 		</ul>
 
-
+	<%
+  
+    if (usuario==null) {
+%>
 		<!-- Formulario de Login -->
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade show active" id="login" role="tabpanel"
@@ -156,27 +166,27 @@
 					action="<%=request.getContextPath()%>/login" method="POST">
 					<div class="mb-3">
 						<label for="correoLogin" class="form-label">Correo
-							Electr√≥nico</label> <input type="email" class="form-control"
+							ElectrÛnico</label> <input type="email" class="form-control"
 							name="correo" id="correoLogin"
-							placeholder="Introduce tu correo electr√≥nico" required>
+							placeholder="Introduce tu correo electrÛnico" required>
 					</div>
 					<div class="mb-3">
-						<label for="contrasenyaLogin" class="form-label">Contrase√±a</label>
+						<label for="contrasenyaLogin" class="form-label">ContraseÒa</label>
 						<input type="password" class="form-control" name="contrasena"
-							id="contrasenyaLogin" placeholder="Introduce tu contrase√±a"
+							id="contrasenyaLogin" placeholder="Introduce tu contraseÒa"
 							required>
 					</div>
 					<button type="submit" class="btn btn-primary w-100">Iniciar
-						Sesi√≥n</button>
+						SesiÛn</button>
 				</form>
 				<br>
 				<div class="text-center mt-3">
 					<a href="recuperar.jsp"
-						class="btn btn-link text-decoration-none w-100"> ¬øOlvidaste tu
-						contrase√±a? </a>
+						class="btn btn-link text-decoration-none w-100"> øOlvidaste tu
+						contraseÒa? </a>
 				</div>
 			</div>
-
+	
 			<!-- Formulario de Registro -->
 			<div class="tab-pane fade" id="register" role="tabpanel"
 				aria-labelledby="register-tab">
@@ -194,25 +204,25 @@
 					</div>
 					<div class="mb-3">
 						<label for="correoRegistro" class="form-label">Correo
-							Electr√≥nico</label> <input type="email" class="form-control"
+							ElectrÛnico</label> <input type="email" class="form-control"
 							id="correoRegistro" name="correo"
-							placeholder="Introduce tu correo electr√≥nico" required>
+							placeholder="Introduce tu correo electrÛnico" required>
 					</div>
 					<div class="mb-3">
-						<label for="contrasenaRegistro" class="form-label">Contrase√±a</label>
+						<label for="contrasenaRegistro" class="form-label">ContraseÒa</label>
 						<input type="password" class="form-control"
 							id="contrasenaRegistro" name="contrasena"
-							placeholder="Introduce tu contrase√±a" required>
+							placeholder="Introduce tu contraseÒa" required>
 					</div>
 					<div class="mb-3">
-						<label for="direccionRegistro" class="form-label">Direcci√≥n</label>
+						<label for="direccionRegistro" class="form-label">DirecciÛn</label>
 						<input type="text" class="form-control" id="direccionRegistro"
-							name="direccion" placeholder="Introduce tu direcci√≥n" required>
+							name="direccion" placeholder="Introduce tu direcciÛn" required>
 					</div>
 					<div class="mb-3">
-						<label for="telefonoRegistro" class="form-label">Tel√©fono</label>
+						<label for="telefonoRegistro" class="form-label">TelÈfono</label>
 						<input type="text" class="form-control" id="telefonoRegistro"
-							name="telefono" placeholder="Introduce tu tel√©fono" required>
+							name="telefono" placeholder="Introduce tu telÈfono" required>
 					</div>
 					<div class="mb-3">
 						<label for="rolRegistro" class="form-label">Rol</label> <select
@@ -223,7 +233,14 @@
 					<button type="submit" class="btn btn-success w-100">Registrarse</button>
 				</form>
 			</div>
-			<!-- Formulario de Actualizaci√≥n de Usuario -->
+					<%
+    } 
+%>
+			<%
+  
+    if (usuario!=null) {
+%>
+			<!-- Formulario de ActualizaciÛn de Usuario -->
 			<div class="tab-pane fade" id="update" role="tabpanel"
 				aria-labelledby="update-tab">
 				<form action="<%=request.getContextPath()%>/actualizar"
@@ -231,39 +248,41 @@
 					<div class="mb-3">
 						<label for="nombreUpdate" class="form-label">Nombre</label> <input
 							type="text" class="form-control" id="nombreUpdate" name="nombre"
-							placeholder="Introduce tu nombre" required>
+							value="<%=  usuario.getNombre()%>" required>
 					</div>
 					<div class="mb-3">
 						<label for="apellidosUpdate" class="form-label">Apellidos</label>
 						<input type="text" class="form-control" id="apellidosUpdate"
-							name="apellidos" placeholder="Introduce tus apellidos" required>
+							name="apellidos" value="<%= usuario.getApellidos() %>" required>
 					</div>
 
 					<div class="mb-3">
-						<label for="direccionUpdate" class="form-label">Direcci√≥n</label>
+						<label for="direccionUpdate" class="form-label">DirecciÛn</label>
 						<input type="text" class="form-control" id="direccionUpdate"
-							name="direccion" placeholder="Introduce tu direcci√≥n" required>
+							name="direccion" value="<%= usuario.getDireccion() %>" required>
 					</div>
 					<div class="mb-3">
-						<label for="telefonoUpdate" class="form-label">Tel√©fono</label> <input
+						<label for="telefonoUpdate" class="form-label">TelÈfono</label> <input
 							type="text" class="form-control" id="telefonoUpdate"
-							name="telefono" placeholder="Introduce tu tel√©fono" required>
+							name="telefono" value="<%= usuario.getTelefono() %>" required>
 					</div>
 					<button type="submit" class="btn btn-warning w-100">Actualizar
 						Usuario</button>
 				</form>
 			</div>
-
+		<%
+    } 
+%>
 
 		</div>
 
 	</div>
-	</div>
+	
 
-	<!-- Pie de p√°gina -->
+	<!-- Pie de p·gina -->
 	<footer
 		style="background-color: #5B3E34; color: #C4D1AA; text-align: center; padding: 15px 0; margin-top: 20px;">
-		<p style="margin: 0; font-size: 1rem;">¬© 2024 Bonsai Sur. Todos
+		<p style="margin: 0; font-size: 1rem;">© 2024 Bonsai Sur. Todos
 			los derechos reservados.</p>
 	</footer>
 

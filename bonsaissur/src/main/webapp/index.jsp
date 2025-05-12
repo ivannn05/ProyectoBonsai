@@ -69,7 +69,7 @@
 					</button>
 				</form>
 				<!-- Íconos -->
-				<a href="carrito.jsp" class="me-3 icono"><i class="bi bi-cart"></i></a>
+				<a  class="me-3 icono"><i class="bi bi-cart"></i></a>
 				<%
 				Usuario usuario = (Usuario) session.getAttribute("Usuario");
 				if (usuario != null) {
